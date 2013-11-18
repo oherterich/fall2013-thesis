@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Letter Gothic Std";
+  background: url("../img/landingpage_bg.jpg") no-repeat center center fixed;
+  background-size: cover; }
+
+#content {
+  width: 100%;
+  height: 100%; }
+
+#title {
+  width: 25%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 17%;
+  transform: rotate(-4.5deg);
+  -ms-transform: rotate(-4.5deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-4.5deg);
+  /* Safari and Chrome */ }
+  #title h1 {
+    width: 79%;
+    margin: 0 auto;
+    color: #898682;
+    font-size: 2.6rem;
+    text-align: center;
+    font-weight: normal;
+    border-bottom: 1px solid #2c2b29; }
+  #title h3 {
+    color: #898682;
+    font-size: 1.0rem;
+    font-weight: normal;
+    text-align: center;
+    padding-top: 4%; }
+
+#begin {
+  width: 33%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 40%;
+  background: lime;
+  font-size: 1.6rem;
+  padding: 2.3% 0% 1.5% 0%;
+  text-align: center;
+  background: #898682;
+  border-radius: 6px;
+  transition: background-color 0.5s; }
+  #begin:hover {
+    background-color: #9e9b96;
+    transition: background-color 0.5s; }
+  #begin a:link, #begin a:visited {
+    color: #281e15;
+    text-decoration: none; }
+
+#login {
+  position: absolute;
+  width: 400px;
+  height: 360px;
+  top: 50%;
+  left: 50%;
+  margin-top: -180px;
+  margin-left: -200px;
+  padding: 2%;
+  background: #242321; }
+  #login h2 {
+    font-size: 1.7rem;
+    color: #cccbcb;
+    margin: 15px 0px 30px 100px;
+    font-weight: normal; }
+  #login p {
+    color: #cccbcb;
+    font-size: 0.9rem;
+    margin: 3% 0; }
+  #login img {
+    float: left; }
+
+#connect {
+  width: 33%;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 6%;
+  background: lime;
+  font-size: 1.6rem;
+  padding: 3% 0% .5% 0%;
+  text-align: center;
+  background: #898682;
+  border-radius: 6px;
+  transition: background-color 0.5s; }
+  #connect:hover {
+    background-color: #9e9b96;
+    transition: background-color 0.5s; }
+  #connect a:link, #connect a:visited {
+    color: #281e15;
+    text-decoration: none; }
+
+#backtomain {
+  display: block;
+  width: 30%;
+  color: #cccbcb;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: normal;
+  text-decoration: none;
+  margin: 10px auto;
+  transition: color 0.5s; }
+  #backtomain:hover {
+    color: #f6f6f6;
+    transition: color 0.5s; }
