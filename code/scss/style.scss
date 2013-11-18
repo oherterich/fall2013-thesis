@@ -70,7 +70,7 @@ body {
 	}
 }
 
-#login {
+#login-visible {
 	position: absolute;
 	width: 400px;
 	height: 360px;
@@ -80,6 +80,9 @@ body {
 	margin-left: -200px;
 	padding: 2%;
 	background: #242321;
+	opacity: 1.0;
+
+	transition: opacity 0.5s;
 
 	h2 {
 		font-size: 1.7rem;
@@ -96,6 +99,33 @@ body {
 
 	img {
 		float: left;
+	}
+}
+
+#login-hidden {
+	height: 0%;
+	width: 0%;
+	position: absolute;
+	top: -99999px;
+	left: -99999px;
+	opacity: 0.0;
+
+	transition: opacity 0.5s;
+
+}
+
+#exit-button {
+	display: block;
+	width: 23px;
+	height: 23px;
+	background: url("../img/exitbutton.png");
+	float: right;
+
+	transition: background 0.5s;
+
+	&:hover{
+		background: url("../img/exitbutton_hover.png");
+		transition: background 0.5s;
 	}
 }
 

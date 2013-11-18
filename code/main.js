@@ -1,12 +1,9 @@
 var clientid = "3a4831a9152845bcb5caa94f713a8d00";
-var redirectURL = "http://macaroni.local/GradSchool/Thesis/Fall_FinalPresentation/code/";
+var redirectURL = "http://macaroni.local/GradSchool/Thesis/fall2013-thesis/code/";
 var authURL = "https://api.instagram.com/oauth/authorize/?client_id=" + clientid + "&redirect_uri=" + redirectURL + "&response_type=token";
 
-var instagramLogin = document.querySelector('a');
-
+var instagramLogin = document.querySelector('#connect-link');
 instagramLogin.href = authURL;
-
-console.log(instagramLogin.href);
 
 function getHashValue(key) {
   return location.hash.split('=')[1];
@@ -16,6 +13,32 @@ function getHashValue(key) {
 var hash = getHashValue('hash');
 console.log("access token: " + hash);
 
+/******************************************/
+/**************DETECT CLICK****************/
+/******************************************/
+
+var beginButton = document.querySelector("#begin-link");
+var login = document.querySelector("#login-hidden");
+
+beginButton.addEventListener('click', function(evt) {
+	login.id = "login-visible";
+});
+
+var exitButton = document.querySelector("#exit-button");
+
+exitButton.addEventListener('click', function(evt) {
+	login.id = "login-hidden";
+})
+
+
+
+
+
+
+
+/******************************************/
+/*********GET DATA FROM INSTAGRAM**********/
+/******************************************/
 $(document).ready(function(){
 
 	var userid = "";
@@ -30,7 +53,6 @@ $(document).ready(function(){
 		dataType : "jsonp",
 		success : function(parsed_json) {
 			userid = parsed_json['data']['id'];
-			console.log(userid);
 		},
 		complete : function() {
 			getUserPhotos();

@@ -57,7 +57,7 @@ body {
     color: #281e15;
     text-decoration: none; }
 
-#login {
+#login-visible {
   position: absolute;
   width: 400px;
   height: 360px;
@@ -66,18 +66,40 @@ body {
   margin-top: -180px;
   margin-left: -200px;
   padding: 2%;
-  background: #242321; }
-  #login h2 {
+  background: #242321;
+  opacity: 1.0;
+  transition: opacity 0.5s; }
+  #login-visible h2 {
     font-size: 1.7rem;
     color: #cccbcb;
     margin: 15px 0px 30px 100px;
     font-weight: normal; }
-  #login p {
+  #login-visible p {
     color: #cccbcb;
     font-size: 0.9rem;
     margin: 3% 0; }
-  #login img {
+  #login-visible img {
     float: left; }
+
+#login-hidden {
+  height: 0%;
+  width: 0%;
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  opacity: 0.0;
+  transition: opacity 0.5s; }
+
+#exit-button {
+  display: block;
+  width: 23px;
+  height: 23px;
+  background: url("../img/exitbutton.png");
+  float: right;
+  transition: background 0.5s; }
+  #exit-button:hover {
+    background: url("../img/exitbutton_hover.png");
+    transition: background 0.5s; }
 
 #connect {
   width: 33%;
