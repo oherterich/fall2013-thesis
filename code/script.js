@@ -80,7 +80,7 @@ var light = new THREE.SpotLight(0xE8E0BE, 1.0, 5000.0, Math.PI/8, 75.0); //small
 //var light = new THREE.SpotLight(0xE8E0BE, 1.0, 10000.0, Math.PI/4, 10.0); //bigger
 
 var hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 1.0);
-scene.add(hemiLight);
+//scene.add(hemiLight);
 
 
 scene.add(light);

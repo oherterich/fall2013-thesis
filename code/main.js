@@ -71,7 +71,10 @@ $(document).ready(function(){
 					type : "POST",
 					url : "savePhotos.php",
 					dataType : "jsonp",
-					data : parsed_json
+					data : parsed_json,
+				})
+				.always(function (data) {
+					window.location="three.html";
 				});
 			}
 		});
