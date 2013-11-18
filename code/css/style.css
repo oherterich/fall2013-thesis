@@ -55,7 +55,8 @@ body {
     transition: background-color 0.5s; }
   #begin a:link, #begin a:visited {
     color: #281e15;
-    text-decoration: none; }
+    text-decoration: none;
+    padding: 10% 13%; }
 
 #login-visible {
   position: absolute;
