@@ -119,11 +119,9 @@ for (var i = 0; i < 30; i++) {
 
 	var planeGeo = new THREE.PlaneGeometry(500, 500, 10, 10);
 	var planeMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
-
-	//var texture = THREE.ImageUtils.loadTexture(photos[0]);
 	
-	var rand = Math.floor(Math.random() * 31);
-	var texture = THREE.ImageUtils.loadTexture("instagram_img/instagram_" + rand + ".jpg");
+	var rand = Math.floor(Math.random() * photoLinks.length);
+	var texture = THREE.ImageUtils.loadTexture("instagram_img/" + photoLinks[rand] + ".jpg");
 	var rand2 = Math.floor(Math.random() * 5);
 	var rough = THREE.ImageUtils.loadTexture("instagram_img/texture_" + rand2 + ".jpg");
 	var material = new THREE.MeshPhongMaterial({ map: texture, bumpMap: rough, bumpScale: 15 });
@@ -148,6 +146,14 @@ for (var i = 0; i < planeList.length; i++) {
 }
 
 
+//CREATE INITIAL BACKGROUND TEXTURE PLANE
+var planeGeo = new THREE.PlaneGeometry(7280,3700,10,10);
+var texture = THREE.ImageUtils.loadTexture("instagram_img/background_texture_large.jpg");
+var planeMat = new THREE.MeshPhongMaterial({ map: texture });
+var backgroundTexture = new THREE.Mesh(planeGeo, planeMat);
+backgroundTexture.position.z = -1;
+scene.add( backgroundTexture );
+
 
 //This function adds a plane to the scene based where the camera and mouse is located.
 function addPlane() {
@@ -171,8 +177,8 @@ function addPlane() {
 	var planeGeo = new THREE.PlaneGeometry(500, 500, 10, 10);
 	var planeMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
 	
-	var rand = Math.floor(Math.random() * 31);
-	var texture = THREE.ImageUtils.loadTexture("instagram_img/instagram_" + rand + ".jpg");
+	var rand = Math.floor(Math.random() * photoLinks.length);
+	var texture = THREE.ImageUtils.loadTexture("instagram_img/" + photoLinks[rand] + ".jpg");
 	var rand2 = Math.floor(Math.random() * 5);
 	var rough = THREE.ImageUtils.loadTexture("instagram_img/texture_" + rand2 + ".jpg");
 	var material = new THREE.MeshPhongMaterial({ map: texture, bumpMap: rough, bumpScale: 15 });
@@ -201,6 +207,7 @@ function checkPlaneDistance() {
 		var d = lineLength(planeList[i].position.x, planeList[i].position.y, camera.position.x, camera.position.y);
 		if (d > planeRemoveScale) {
 			scene.remove( planeList[i] );
+			planeList.splice(i,1);
 		}
 	}
 }
@@ -352,6 +359,11 @@ function animate(t) {
 
 		for (var i = 0; i < planeList.length; i++) {
 
+			if (planeList[i].material.color.r <= 0.0 && planeList[i].material.color.g <= 0.0 && planeList[i].material.color.b <= 0.0) {
+				scene.remove( planeList[i] );
+				planeList.splice(i,1);
+			}
+
 			if (planeList[i].position.x > (directionVector.x - SCREEN_WIDTH / 2 - range) && planeList[i].position.x < (directionVector.x - SCREEN_WIDTH / 2 + range)) {
 				if (planeList[i].position.y > (directionVector.y + SCREEN_HEIGHT / 2 - range) && planeList[i].position.y < (directionVector.y + SCREEN_HEIGHT / 2 + range)) {
 					planeList[i].material.color.r -= strength;
@@ -371,6 +383,8 @@ function animate(t) {
 		}
 	}
 
+	backgroundTexture.position.x = camera.position.x;
+	backgroundTexture.position.y = camera.position.y;
 
 	light.position.set( camera.position.x, camera.position.y, camera.position.z );
 	light.target = lookAtThis;
@@ -388,18 +402,14 @@ function animate(t) {
 	lookAtThis.position.y = directionVector.y + SCREEN_HEIGHT / 2 + lightOffsetY;
 	lookAtThis.position.z = directionVector.z - 1000;
 
-	//console.log(lookAtThis.position.x + " " + lookAtThis.position.y + " " + lookAtThis.position.z);
-
-	//console.log(directionVector.x + " " + directionVector.y + " " + directionVector.z);
-
-
-
-
 	render();
 
 };
 
 function render() {
+	    renderer.autoClear = false;
+        renderer.clear();
+		//renderer.render(bgScene, bgCam);
 		renderer.render( scene, camera );
 	}
 
